@@ -25,7 +25,6 @@
   {:target :bootstrap
    :output-dir "public/js/compiled/bootstrap"
    :module-hash-names true
-   :entries [maria.user]
    :modules {:main {:entries [maria.user]}}
    :exclude [cljs.js]}
 
