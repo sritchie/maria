@@ -1,4 +1,4 @@
-(ns maria.pages.block_list
+(ns maria.pages.block-list
   (:require [chia.view :as v]
             [maria.blocks.history :as history]
             [chia.db :as d]
@@ -60,4 +60,3 @@
                   (Block/render block {:blocks        blocks
                                        :block-list    this
                                        :before-change history/before-change})) blocks))))
-
