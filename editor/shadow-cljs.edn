@@ -25,8 +25,14 @@
   {:target :bootstrap
    :output-dir "public/js/compiled/bootstrap"
    :module-hash-names true
-   :modules {:main {:entries [maria.user]}}
-   :exclude [cljs.js]}
+   :entries [maria.user]
+   ;; :modules {:main {:entries [maria.user]}}
+   :exclude [cljs.js
+             io.aviso.exception
+             taoensso.encore
+             taoensso.timbre
+             cljs.core.match
+             taoensso.truss.impl]}
 
   :trusted
   {:target :browser

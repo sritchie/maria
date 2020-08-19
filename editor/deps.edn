@@ -4,7 +4,7 @@
  ;;
  :deps    {org.clojure/clojure                 {:mvn/version "1.10.0"}
            thheller/shadow-cljs                {:mvn/version "2.10.21"}
-           org.clojure/core.match              {:mvn/version "0.3.0-alpha4"}
+           org.clojure/core.match              {:mvn/version "1.0.0"}
            org.clojure/data.json               {:mvn/version "0.2.6"}
            org.clojure/test.check              {:mvn/version "0.10.0-alpha2"}
 
@@ -24,7 +24,9 @@
            maria/friendly                      {:local/root "../friendly"}
            maria/shapes                        {:local/root "../shapes"}
            cells                               {:local/root "../cells"}
-           io.samritchie/sicmutils             {:mvn/version "0.13.0-SNAPSHOT"}
+           io.samritchie/sicmutils             {
+                                                :mvn/version "0.13.0-SNAPSHOT"
+                                                }
 
            ;; 3rd party utils
            hiccup                              {:mvn/version "2.0.0-alpha2"}
