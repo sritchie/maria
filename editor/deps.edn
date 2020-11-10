@@ -1,7 +1,6 @@
 {:paths   ["src"
            "vendor"
            "test"]
- ;;
  :deps    {org.clojure/clojure                 {:mvn/version "1.10.0"}
            thheller/shadow-cljs                {:mvn/version "2.10.21"}
            org.clojure/core.match              {:mvn/version "1.0.0"}
@@ -16,7 +15,7 @@
            maria/friendly                      {:local/root "../friendly"}
            maria/shapes                        {:local/root "../shapes"}
            cells                               {:local/root "../cells"}
-           net.littleredcomputer/sicmutils     {:mvn/version "0.13.0"}
+           net.littleredcomputer/sicmutils     {:mvn/version "0.13.1-SNAPSHOT"}
 
            ;; view + data layer
            chia/view                           {:local/root "../chia/view"}

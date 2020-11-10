@@ -95,6 +95,7 @@
                                                     #_#_macroexpand-n maria.eval/macroexpand-n}))
                   (doseq [form ['(in-ns cljs.spec.test.alpha$macros)
                                 '(in-ns maria.user)
+                                '(e/bootstrap-repl!)
                                 '(set!
                                   cljs.tagged-literals/*cljs-data-readers*
                                   (merge cljs.tagged-literals/*cljs-data-readers*
