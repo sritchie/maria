@@ -6,7 +6,7 @@
             [maria.commands.doc :as doc]
             [maria.util :as util]
             [maria.persistence.local :as local]
-            [maria.pages.block_list :as block-list]
+            [maria.pages.block-list :as block-list]
             [maria.curriculum :as curriculum]
             [maria.frames.frame-communication :as frame]
             [applied-science.js-interop :as j]))

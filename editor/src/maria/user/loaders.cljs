@@ -82,4 +82,3 @@
    Usage: `(load-npm \"my-package@0.2.0\")` or `(load-npm \"my-package@latest\")`"
   [package]
   (load-js (str "https://wzrd.in/standalone/" package)))
-

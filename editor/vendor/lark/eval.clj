@@ -7,11 +7,11 @@
         body (cond->> body docstring (drop 1))]
     `(do (def ~name (with-meta (fn [c-state# c-env# source# [~'_ & args#]]
                                  (let [~'&source source#]
-                                    (apply ~(cons 'fn body) c-state# c-env# args#)))
-                               {:doc      ~docstring
-                                :name     '~(symbol (str *ns*) (str name))
-                                :arglists '~[(->> (filter vector? body)
-                                                  (first)
-                                                  (drop 2)
-                                                  (vec))]}))
+                                   (apply ~(cons 'fn body) c-state# c-env# args#)))
+                      {:doc      ~docstring
+                       :name     '~(symbol (str *ns*) (str name))
+                       :arglists '~[(->> (filter vector? body)
+                                         (first)
+                                         (drop 2)
+                                         (vec))]}))
          (~'lark.eval/swap-repl-specials! ~'assoc '~name ~name))))

@@ -13,11 +13,12 @@
               :language-in :ecmascript5
               :output-wrapper false}}
    :build-hooks [(cljs-static.shadow/write-assets!
-                   {:public-path "public" "/live.html" (maria.static/live)})]
+                  {:public-path "public" "/live.html" (maria.static/live)})]
    :output-dir "public/js/compiled/live"
    :module-hash-names true
    :asset-path "/js/compiled/live"
    :modules {:shadow-live {:init-fn maria.frames.live-frame/init}}
+   :compiler-options {:data-readers true}
    :devtools {:loader-mode :eval
               :after-load maria.frames.live-frame/render}}
 
@@ -26,19 +27,26 @@
    :output-dir "public/js/compiled/bootstrap"
    :module-hash-names true
    :entries [maria.user]
-   :exclude [cljs.js]}
+   :compiler-options {:data-readers true}
+   :exclude [cljs.js
+             io.aviso.exception
+             taoensso.encore
+             taoensso.timbre
+             cljs.core.match
+             taoensso.truss.impl]}
 
   :trusted
   {:target :browser
    :output-dir "public/js/compiled/trusted"
    :asset-path "/js/compiled/trusted"
    :build-hooks [(cljs-static.shadow/write-assets!
-                   {:public-path "public" "/index.html" (maria.static/index)})]
+                  {:public-path "public" "/index.html" (maria.static/index)})]
    :modules {:shadow-trusted {:entries [maria.frames.trusted-frame]}}
    :devtools {:autoload true}
    :module-hash-names true
    :compiler-options
-   {:externs ["node_modules/firebase/externs/firebase-app-externs.js"
+   {:data-readers true
+    :externs ["node_modules/firebase/externs/firebase-app-externs.js"
               "node_modules/firebase/externs/firebase-auth-externs.js"
               "externs/react.ext.js"
               "externs/reactDom.ext.js"]}}}}

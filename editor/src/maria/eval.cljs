@@ -78,24 +78,31 @@
   (get (eval-form* form) :value))
 
 (defonce compiler-ready
-         (delay
-          (p/promise [resolve reject]
-            (boot/init
-             c-state
-             {:path         bootstrap-path
-              :load-on-init '#{maria.user
-                               cljs.spec.alpha
-                               cljs.spec.test.alpha}}
-             (fn []
-               (eval-form* '(inject 'cljs.core '{what-is   maria.friendly.kinds/what-is
-                                                 load-gist maria.user.loaders/load-gist
-                                                 load-js   maria.user.loaders/load-js
-                                                 load-npm  maria.user.loaders/load-npm
-                                                 html      chia.view.hiccup/element
-                                                 #_#_macroexpand-n maria.eval/macroexpand-n}))
-               (doseq [form ['(in-ns cljs.spec.test.alpha$macros)
-                             '(in-ns maria.user)]]
-                 (eval-form* form))
-               (resolve))))))
+  (delay
+    (p/promise [resolve reject]
+               (boot/init
+                c-state
+                {:path         bootstrap-path
+                 :load-on-init '#{maria.user
+                                  cljs.spec.alpha
+                                  cljs.spec.test.alpha}}
+                (fn []
+                  (eval-form* '(inject 'cljs.core '{what-is   maria.friendly.kinds/what-is
+                                                    load-gist maria.user.loaders/load-gist
+                                                    load-js   maria.user.loaders/load-js
+                                                    load-npm  maria.user.loaders/load-npm
+                                                    html      chia.view.hiccup/element
+                                                    #_#_macroexpand-n maria.eval/macroexpand-n}))
+                  (doseq [form ['(in-ns cljs.spec.test.alpha$macros)
+                                '(in-ns maria.user)
+                                '(e/bootstrap-repl!)
+                                '(set!
+                                  cljs.tagged-literals/*cljs-data-readers*
+                                  (merge cljs.tagged-literals/*cljs-data-readers*
+                                         {'sicm/complex sicmutils.complex/parse-complex
+                                          'sicm/bigint sicmutils.util/parse-bigint
+                                          'sicm/ratio sicmutils.ratio/parse-ratio}))]]
+                    (eval-form* form))
+                  (resolve))))))
 
 (set! cljs.core/*eval* eval*)
