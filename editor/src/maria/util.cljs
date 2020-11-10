@@ -1,6 +1,6 @@
 (ns maria.util
   (:require [goog.events :as events]
-            [goog.object :as gobj]
+            [goog.dom :as gdom]
             [chia.view :as v]
             [clojure.string :as string]
             [applied-science.js-interop :as j])
@@ -150,3 +150,10 @@
 
 (defn guard->> [f x]
   (when (f x) x))
+
+(defn closest
+  "Return element or first ancestor of element that matches predicate, like jQuery's .closest()."
+  [el pred]
+  (if (pred el)
+    el
+    (gdom/getAncestor el pred)))

@@ -2,8 +2,7 @@
   (:require [cells.linked-graph :as g]
             [chia.util :as u]
             [chia.reactive :as r]
-            [applied-science.js-interop :as j]
-            [chia.util.perf :as perf])
+            [applied-science.js-interop :as j])
   (:require-macros cells.cell))
 
 (def ^:dynamic *self*
@@ -83,14 +82,14 @@
     (if (or (nil? st) (keyword? st)) st :error)))
 
 (defn loading? [cell]
-  (perf/identical? :loading (get-async cell)))
+  (keyword-identical? :loading (get-async cell)))
 
 (defn complete? [cell]
   (nil? (get-async cell)))
 
 (defn- error-st? [st]
   (and (some? st)
-       (not (perf/identical? :loading st))))
+       (not (keyword-identical? :loading st))))
 
 (defn error [cell]
   (-> (get-async cell)

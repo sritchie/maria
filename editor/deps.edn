@@ -10,23 +10,19 @@
 
            athos/kitchen-async                 {:git/url "https://github.com/athos/kitchen-async.git"
                                                 :sha     "68eca4b37e796cf0d3c1850a15560a1f71d47879"}
-
-           appliedscience/js-interop           {:mvn/version "0.2.4"
-                                                #_#_:git/url "https://github.com/appliedsciencestudio/js-interop"
-                                                :sha "0c962fc662f87410e328c08e18e70e532d4fde6e"}
-
-           chia                                {:git/url "https://github.com/mhuebert/chia.git"
-                                                :sha     "8ba5931a73db745107afb68304226628c7a9838c"}
-           mhuebert/cljs-static                {:git/url "https://github.com/mhuebert/cljs-static.git"
-                                                :sha     "d36058f0de7b2b0c2d2ca079efc2f66d73134076"}
+           applied-science/js-interop          {:mvn/version "0.2.7"}
 
            ;; user fun
            maria/friendly                      {:local/root "../friendly"}
            maria/shapes                        {:local/root "../shapes"}
            cells                               {:local/root "../cells"}
-           io.samritchie/sicmutils             {
-                                                :mvn/version "0.13.0-SNAPSHOT"
-                                                }
+           net.littleredcomputer/sicmutils     {:mvn/version "0.13.0"}
+
+           ;; view + data layer
+           chia/view                           {:local/root "../chia/view"}
+           chia/db                             {:local/root "../chia/db"}
+           chia/reactive                       {:local/root "../chia/reactive"}
+           chia/routing                        {:local/root "../chia/routing"}
 
            ;; 3rd party utils
            hiccup                              {:mvn/version "2.0.0-alpha2"}
@@ -34,11 +30,4 @@
            com.lucasbradstreet/cljs-uuid-utils {:mvn/version "1.0.2"}
            fast-zip                            {:mvn/version "0.7.0"}
            bidi                                {:mvn/version "2.1.5"}
-           cider/cider-nrepl                   {:mvn/version "0.16.0"}}
- :aliases {:watch
-           {:override-deps
-            {
-             ;; chia {:local/root "../../chia"}
-             ;; mhuebert/cljs-static {:local/root "../../cljs-static"}
-             ;; appliedscience/js-interop {:local/root "../../js-interop"}
-             }}}}
+           cider/cider-nrepl                   {:mvn/version "0.16.0"}}}
