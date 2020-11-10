@@ -94,7 +94,13 @@
                                                     html      chia.view.hiccup/element
                                                     #_#_macroexpand-n maria.eval/macroexpand-n}))
                   (doseq [form ['(in-ns cljs.spec.test.alpha$macros)
-                                '(in-ns maria.user)]]
+                                '(in-ns maria.user)
+                                '(set!
+                                  cljs.tagged-literals/*cljs-data-readers*
+                                  (merge cljs.tagged-literals/*cljs-data-readers*
+                                         {'sicm/complex sicmutils.complex/parse-complex
+                                          'sicm/bigint sicmutils.util/parse-bigint
+                                          'sicm/ratio sicmutils.ratio/parse-ratio}))]]
                     (eval-form* form))
                   (resolve))))))
 
